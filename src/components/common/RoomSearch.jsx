@@ -6,15 +6,16 @@ import RoomSearchResults from "./RoomSearchResult"
 import RoomTypeSelector from "./RoomTypeSelector"
 
 const RoomSearch = () => {
+
+	const [errorMessage, setErrorMessage] = useState("")
+	const [availableRooms, setAvailableRooms] = useState([])
+	const [isLoading, setIsLoading] = useState(false)
+
 	const [searchQuery, setSearchQuery] = useState({
 		checkInDate: "",
 		checkOutDate: "",
 		roomType: ""
 	})
-
-	const [errorMessage, setErrorMessage] = useState("")
-	const [availableRooms, setAvailableRooms] = useState([])
-	const [isLoading, setIsLoading] = useState(false)
 
 	const handleSearch = (e) => {
 		e.preventDefault()
@@ -42,6 +43,15 @@ const RoomSearch = () => {
 			})
 	}
 
+	
+	const handleClearSearch = () => {
+		setSearchQuery({
+			checkInDate: "",
+			checkOutDate: "",
+			roomType: ""
+		})
+		setAvailableRooms([])
+	}
 	const handleInputChange = (e) => {
 		const { name, value } = e.target
 		setSearchQuery({ ...searchQuery, [name]: value })
@@ -50,14 +60,6 @@ const RoomSearch = () => {
 		if (checkInDate.isValid() && checkOutDate.isValid()) {
 			setErrorMessage("")
 		}
-	}
-	const handleClearSearch = () => {
-		setSearchQuery({
-			checkInDate: "",
-			checkOutDate: "",
-			roomType: ""
-		})
-		setAvailableRooms([])
 	}
 
 	return (

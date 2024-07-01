@@ -22,9 +22,7 @@ const Checkout = () => {
 		roomType: "",
 		roomPrice: ""
 	})
-
-	const { roomId } = useParams()
-
+	
 	useEffect(() => {
 		setTimeout(() => {
 			getRoomById(roomId)
@@ -38,6 +36,10 @@ const Checkout = () => {
 				})
 		}, 1000)
 	}, [roomId])
+
+	const { roomId } = useParams()
+
+
 
 	return (
 		<div>

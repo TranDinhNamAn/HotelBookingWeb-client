@@ -23,6 +23,7 @@ const BookingsTable = ({ bookingInfo, handleBookingCancellation }) => {
 		setFilteredBookings(bookingInfo)
 	}, [bookingInfo])
 
+	
 	return (
 		<section className="p-4">
 			<DateSlider onDateChange={filterBooknigs} onFilterChange={filterBooknigs} />
